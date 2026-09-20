@@ -14,7 +14,8 @@
     "coverage": "node scripts/audit-route-coverage.js",
     "verify": "node scripts/verify-geometry-and-visuals.js",
     "qa": "node scripts/run-quality-gates.js",
-    "cli": "node scripts/reverse-engineer-cli.js"
+    "cli": "node scripts/reverse-engineer-cli.js",
+    "preview": "node scripts/preview-server.js --dir ./benchmark-workspace --port 3000"
   },
   "keywords": [
     "reverse-engineering",

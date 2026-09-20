@@ -1,0 +1,262 @@
+{
+  "targetWebsite": "https://www.bramvanvugt.com",
+  "workspace": "./benchmark-workspace",
+  "previewUrl": "http://127.0.0.1:3000",
+  "port": 3000,
+  "host": "127.0.0.1",
+  "startupCommand": "node scripts/preview-server.js --dir ./benchmark-workspace --port 3000",
+  "shutdownCommand": "curl -X GET http://127.0.0.1:3000/_shutdown",
+  "npmScript": "npm run preview",
+  "browser": {
+    "name": "Google Chrome",
+    "automationEngine": "Chrome DevTools Protocol (CDP)",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+  },
+  "overallStatus": "PASS",
+  "timestamp": "2026-09-20T02:35:00.000Z",
+  "viewports": [
+    {
+      "name": "Desktop",
+      "width": 1440,
+      "height": 900,
+      "horizontalOverflow": false,
+      "screenshot": "preview_desktop_1440.png",
+      "status": "PASS"
+    },
+    {
+      "name": "Tablet",
+      "width": 768,
+      "height": 1024,
+      "horizontalOverflow": false,
+      "screenshot": "preview_tablet_768.png",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile",
+      "width": 375,
+      "height": 667,
+      "horizontalOverflow": false,
+      "screenshot": "preview_mobile_375.png",
+      "status": "PASS"
+    }
+  ],
+  "routes": [
+    {
+      "pathname": "/",
+      "type": "root",
+      "status": 200,
+      "title": "Webdesign & Webflow Development | Breems",
+      "sizeBytes": 61724,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/about",
+      "type": "static",
+      "status": 200,
+      "title": "Bram van Vugt – Webflow Partner | Web Design & Development",
+      "sizeBytes": 58281,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/work",
+      "type": "static",
+      "status": 200,
+      "title": "Work Portfolio | Websites gebouwd met aandacht",
+      "sizeBytes": 64275,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/contact",
+      "type": "static",
+      "status": 200,
+      "title": "Contact Bram van Vugt | Web Design & Development",
+      "sizeBytes": 45262,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/privacy-statement",
+      "type": "static",
+      "status": 200,
+      "title": "Privacy Policy | Breems - Data Protection & Privacy",
+      "sizeBytes": 40243,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/alquion",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Alquion | Projecten Breems",
+      "sizeBytes": 60746,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/ausems",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Ausems | Projecten Breems",
+      "sizeBytes": 61039,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/bloomer",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Bloomer | Projecten Breems",
+      "sizeBytes": 58724,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/design-chair",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Design Chair | Projecten Breems",
+      "sizeBytes": 58570,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/limelight",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Limelight | Projecten Breems",
+      "sizeBytes": 61395,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/massage-studio",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Massage studio | Projecten Breems",
+      "sizeBytes": 59723,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/move-to-dream",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Move to Dream | Projecten Breems",
+      "sizeBytes": 59792,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    },
+    {
+      "pathname": "/projecten/yoga-website",
+      "type": "dynamic",
+      "family": "/projecten/:slug",
+      "status": 200,
+      "title": "Yoga docent Hilde | Projecten Breems",
+      "sizeBytes": 62136,
+      "hasLorem": false,
+      "hasStylesheet": true,
+      "brokenImages": 0,
+      "horizontalOverflow": false,
+      "passed": true
+    }
+  ],
+  "inSiteNavigationTests": [
+    {
+      "step": 1,
+      "from": "/",
+      "targetSelector": "a[href=\"/about\"]",
+      "to": "/about",
+      "status": "PASS"
+    },
+    {
+      "step": 2,
+      "from": "/about",
+      "targetSelector": "a[href=\"/work\"]",
+      "to": "/work",
+      "status": "PASS"
+    },
+    {
+      "step": 3,
+      "from": "/work",
+      "targetSelector": "a[href*=\"/projecten/alquion\"]",
+      "to": "/projecten/alquion",
+      "status": "PASS"
+    },
+    {
+      "step": 4,
+      "from": "/projecten/alquion",
+      "targetSelector": "a[href=\"/contact\"]",
+      "to": "/contact",
+      "status": "PASS"
+    },
+    {
+      "step": 5,
+      "from": "/contact",
+      "targetSelector": "a[href=\"/privacy-statement\"]",
+      "to": "/privacy-statement",
+      "status": "PASS"
+    }
+  ],
+  "brokenLinks": {
+    "totalAudited": 13,
+    "brokenCount": 0,
+    "list": []
+  },
+  "assetIntegrity": {
+    "brokenImages": 0,
+    "brokenStylesheets": 0,
+    "missingFonts": 0,
+    "fontFamilyComputed": "Neuemontreal, Arial, sans-serif"
+  },
+  "consoleErrors": {
+    "runtimeExceptions": 0,
+    "syntaxErrors": 0,
+    "externalTelemetryBlocked": "cloudflareinsights.com/cdn-cgi/rum (expected due to local origin)"
+  }
+}
