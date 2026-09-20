@@ -6,8 +6,7 @@
  * 
  * Run in DevTools console or evaluate via CDP.
  */
-
-(() => {
+function auditInteractions() {
   const report = {
     url: window.location.href,
     timestamp: new Date().toISOString(),
@@ -78,4 +77,13 @@
     console.warn("WARNING: Detected elements blocked from pointer events:", report.blockedElements);
   }
   return report;
-})();
+}
+
+if (typeof window !== 'undefined') {
+  auditInteractions();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { auditInteractions };
+}
+

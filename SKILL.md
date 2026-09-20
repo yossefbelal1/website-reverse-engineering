@@ -46,6 +46,8 @@ This skill is **Tool-First, Evidence-First, and Autonomous**. When given a refer
   - [DESIGN.md Protocol](#d-designmd-protocol)
   - [SKILL Extractor Protocol](#e-skill-extractor-protocol)
 - [The Master Forensic Workflow](#the-master-forensic-workflow)
+- [The Automated Engine & CLI Architecture](#the-automated-engine--cli-architecture)
+- [Dynamic Route Clustering & Representative Instances](#dynamic-route-clustering--representative-instances)
 - [The Tool Evidence Log Standard](#the-tool-evidence-log-standard)
 - [Common Architectural Traps & Failure Prevention](#common-architectural-traps--failure-prevention)
 - [The 17 Quality Gates](#the-17-quality-gates)
@@ -189,34 +191,95 @@ When reusable workflow distillation is triggered:
 ## The Master Forensic Workflow
 
 ```
-DISCOVER WEBSITE
+DISCOVER WEBSITE (sitemap, robots, HTML crawl, JS bundle scan)
        ↓
 DISCOVER AVAILABLE FORENSIC TOOLS (Step 0)
        ↓
 MAP TOOL → CAPABILITY MATRIX
        ↓
-USE SPECIALIZED TOOLS (Capture Motion, CSS Peeper, Woblo)
+BUILD ROUTE GRAPH & CLUSTER DYNAMIC FAMILIES (/work/:slug)
        ↓
-CROSS-VALIDATE EVIDENCE (Tool Evidence + Browser Ground Truth)
+COLLECT PAGE-BY-PAGE EVIDENCE & MEDIA ASSETS (evidence/<route>/)
        ↓
-BROWSER REPLAY & INTERACTION CRAWL
+GENERATE GLOBAL DESIGN SYSTEM & ROUTE-SPECIFIC PAGE SPECS
        ↓
-MEASURE SPATIAL GEOMETRY (Container-first, Δ <= 1px)
+RECONSTRUCT INCREMENTALLY (Native stack, subpages self-contained in <head>)
        ↓
-RECONSTRUCT INCREMENTALLY (Tokens → Shell → Primitives → Sections)
+AUDIT ROUTE COVERAGE & NAVIGATION INTEGRITY (Zero FOUC, zero 404s)
        ↓
-VISUAL DIFF (Dual-CDP Side-by-Side Comparison)
+VERIFY SPATIAL GEOMETRY (Container-first, Δ <= 1px)
        ↓
-ROOT-CAUSE ARCHITECTURAL FIX (Zero ad-hoc hack margins)
+EVALUATE 17 QUALITY GATES VIA RUN-QUALITY-GATES.JS (Block First-Page Mirage)
        ↓
-RESPONSIVE TEST (Complete 12-Viewport Suite)
-       ↓
-CROSS-PAGE QA & LIFECYCLE AUDIT (Navigation stress testing A -> B -> A)
-       ↓
-FINAL HUMAN-EYE QA & 17 QUALITY GATES SIGN-OFF
+FINAL EVIDENCE-BASED QA SIGN-OFF (FINAL_QA.md)
 ```
 
 ---
+
+## The Automated Engine & CLI Architecture
+
+To prevent subjective approximation and eliminate the First-Page Mirage, the skill is backed by an executable Node.js forensic engine located in `scripts/`:
+
+```
+scripts/
+├── reverse-engineer-cli.js       # Master unified CLI orchestrator
+├── discover-routes.js            # Multi-source route discovery (sitemap, robots, DOM, scripts)
+├── build-route-graph.js          # Hierarchical route graph builder & dynamic route clustering
+├── collect-page-evidence.js      # Structured page-by-page evidence collector
+├── extract-assets.js             # Multi-page media and asset harvester
+├── generate-page-specs.js        # Global design system & route-specific page spec generator
+├── audit-route-coverage.js       # Route completeness, FOUC, and navigation integrity auditor
+├── verify-geometry-and-visuals.js# Container-first sub-pixel geometry delta verifier
+├── run-quality-gates.js          # Hard Quality Gate evaluator & FINAL_QA.md enforcer
+├── audit-route-geometry.js       # In-browser DOM geometry extractor (console/CDP)
+├── extract-design-tokens.js      # In-browser computed tokens extractor
+├── inspect-animations.js         # In-browser animation & ScrollTrigger inspector
+├── interaction-crawler.js        # In-browser interactive reachability crawler
+└── capture-comparison.js         # Multi-viewport capture & visual metrics helper
+```
+
+### CLI Quick Reference
+
+```bash
+# 1. Multi-source route discovery
+node scripts/reverse-engineer-cli.js discover https://example.com --out discovered.json
+
+# 2. Build route graph and cluster dynamic templates
+node scripts/reverse-engineer-cli.js graph discovered.json --out route-graph.json --md ROUTE_INVENTORY.md
+
+# 3. Collect page-by-page evidence
+node scripts/reverse-engineer-cli.js evidence route-graph.json --out ./evidence
+
+# 4. Harvest all media assets
+node scripts/reverse-engineer-cli.js assets ./evidence --download ./public --out ASSET_INVENTORY.md
+
+# 5. Generate page specifications
+node scripts/reverse-engineer-cli.js specs route-graph.json --evidence ./evidence --outDir ./specs
+
+# 6. Audit local workspace route coverage and navigation integrity
+node scripts/reverse-engineer-cli.js coverage route-graph.json --workspace ./ --out ROUTE_COVERAGE_MATRIX.md
+
+# 7. Evaluate the 17 Quality Gates & enforce First-Page Mirage block
+node scripts/reverse-engineer-cli.js qa route-graph.json --workspace ./ --out FINAL_QA.md
+
+# Or execute full automated pipeline:
+node scripts/reverse-engineer-cli.js pipeline https://example.com --workspace ./
+```
+
+---
+
+## Dynamic Route Clustering & Representative Instances
+
+A major architectural trap is treating dynamic routes as flat, isolated pages or assuming one sample represents the entire family.
+
+When the route engine discovers parameterized paths (e.g. `/projecten/alquion`, `/projecten/limelight`, `/projecten/ausems`):
+1. **Cluster into Template**: Groups them into `/projecten/:slug`.
+2. **Representative Sampling**: Preserves up to 5 representative instances for independent testing and verification.
+3. **Template vs Instance Specification**: Documents the shared structural wrapper (layout, hero banner, related links) versus instance-variable slots (project title, gallery assets, client metadata).
+4. **Verification Obligation**: Quality Gate QG-01 strictly requires that dynamic route families are tested across multiple representative instances.
+
+---
+
 
 ## The Tool Evidence Log Standard
 

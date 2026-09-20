@@ -6,8 +6,7 @@
  * 
  * Run in DevTools console or evaluate via CDP.
  */
-
-(() => {
+function inspectAnimations() {
   const report = {
     url: window.location.href,
     timestamp: new Date().toISOString(),
@@ -104,4 +103,13 @@
   console.log("=== Comprehensive Motion & Animation Report ===");
   console.log(JSON.stringify(report, null, 2));
   return report;
-})();
+}
+
+if (typeof window !== 'undefined') {
+  inspectAnimations();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { inspectAnimations };
+}
+

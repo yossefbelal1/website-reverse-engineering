@@ -5,8 +5,7 @@
  * Paste this into the browser DevTools Console on the reference website.
  * Output: Clean JSON object containing computed colors, typography, spacing, and radii.
  */
-
-(() => {
+function extractDesignTokens() {
   const result = {
     url: window.location.href,
     extractedAt: new Date().toISOString(),
@@ -90,4 +89,13 @@
   console.log("=== Extracted Design Tokens ===");
   console.log(JSON.stringify(payload, null, 2));
   return payload;
-})();
+}
+
+if (typeof window !== 'undefined') {
+  extractDesignTokens();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { extractDesignTokens };
+}
+

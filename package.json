@@ -1,0 +1,34 @@
+{
+  "name": "website-reverse-engineering",
+  "version": "2.0.0",
+  "description": "Autonomous forensic website reverse-engineering, multi-source route discovery, route graph modeling, and site-wide reconstruction verification engine",
+  "main": "scripts/reverse-engineer-cli.js",
+  "bin": {
+    "reverse-engineer": "./scripts/reverse-engineer-cli.js"
+  },
+  "scripts": {
+    "test": "node tests/run-all-tests.js",
+    "discover": "node scripts/discover-routes.js",
+    "graph": "node scripts/build-route-graph.js",
+    "evidence": "node scripts/collect-page-evidence.js",
+    "coverage": "node scripts/audit-route-coverage.js",
+    "verify": "node scripts/verify-geometry-and-visuals.js",
+    "qa": "node scripts/run-quality-gates.js",
+    "cli": "node scripts/reverse-engineer-cli.js"
+  },
+  "keywords": [
+    "reverse-engineering",
+    "route-discovery",
+    "route-graph",
+    "web-forensics",
+    "design-tokens",
+    "sub-pixel-geometry",
+    "visual-diff",
+    "quality-gates"
+  ],
+  "author": "yossefbelal1",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -6,8 +6,7 @@
  * 
  * Run in DevTools console or evaluate via CDP.
  */
-
-(() => {
+function auditRouteGeometry() {
   const geometry = {
     url: window.location.href,
     timestamp: new Date().toISOString(),
@@ -78,4 +77,13 @@
   console.log("=== Route Geometry Audit Report ===");
   console.log(JSON.stringify(geometry, null, 2));
   return geometry;
-})();
+}
+
+if (typeof window !== 'undefined') {
+  auditRouteGeometry();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { auditRouteGeometry };
+}
+
