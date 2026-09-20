@@ -173,7 +173,9 @@ function isSameDomain(candidateUrl, targetOrigin) {
     // Exact hostname match or www vs non-www match
     const candHost = cand.hostname.replace(/^www\./, '');
     const targetHost = target.hostname.replace(/^www\./, '');
-    return candHost === targetHost;
+    if (candHost !== targetHost) return false;
+    if (target.port !== cand.port) return false;
+    return true;
   } catch (e) {
     return false;
   }

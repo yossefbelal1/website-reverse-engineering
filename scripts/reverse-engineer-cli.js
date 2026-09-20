@@ -2,7 +2,7 @@
 /**
  * reverse-engineer-cli.js
  * 
- * Master Orchestrator CLI for the Website Reverse Engineering Engine.
+ * Master Orchestrator CLI for the Website Reverse Engineering Engine (v2.0.0).
  * 
  * Subcommands:
  *   discover <url>               Run multi-source route discovery
@@ -11,8 +11,10 @@
  *   assets <evidence-dir>        Extract and download multi-page media assets
  *   specs <graph.json>           Generate page specifications and global design system
  *   coverage <graph.json>        Audit local workspace route coverage and FOUC status
- *   verify <orig.json> <loc.json> Perform container-first geometry verification
- *   qa <graph.json>              Run all 17 Quality Gates and generate FINAL_QA.md
+ *   diff <orig.html> <loc.html>  Run region-based visual regression comparison
+ *   repair <graph.json>          Execute autonomous self-healing repair loop
+ *   trace <graph.json>           Audit page-spec to implementation traceability
+ *   qa <graph.json>              Run all 17 Quality Gates, scorecard, and FINAL_QA.md/json
  *   pipeline <url>               Run full end-to-end discovery, graph, and QA pipeline
  */
 
@@ -24,6 +26,9 @@ const { collectAllPageEvidence } = require('./collect-page-evidence');
 const { aggregateAssetsFromEvidence, generateAssetInventoryMarkdown } = require('./extract-assets');
 const { generateAllSpecs } = require('./generate-page-specs');
 const { auditWorkspaceCoverage, generateCoverageMarkdown } = require('./audit-route-coverage');
+const { compareVisualRegions, generateVisualDiffMarkdown } = require('./visual-diff-engine');
+const { runAutonomousRepairLoop } = require('./repair-loop');
+const { auditTraceability, generateTraceabilityMarkdown } = require('./verify-traceability');
 const { evaluateQualityGates, generateFinalQAMarkdown } = require('./run-quality-gates');
 
 function printHelp() {
@@ -44,10 +49,16 @@ Commands:
                                    Options: --evidence <dir>, --outDir <dir>
   coverage <graph.json>          Audit local workspace for route completeness, FOUC, and broken links
                                    Options: --workspace <dir>, --out <ROUTE_COVERAGE_MATRIX.md>
-  qa <graph.json>                Run 17 Quality Gates, block First-Page Mirage, generate FINAL_QA.md
-                                   Options: --workspace <dir>, --out <FINAL_QA.md>
+  diff <orig.html> <loc.html>    Run region-based visual & layout regression comparison
+                                   Options: --route <path>, --threshold <float>, --outDir <dir>
+  repair <graph.json>            Run bounded autonomous self-healing repair loop
+                                   Options: --workspace <dir>, --maxRetries <n>, --log <file.json>
+  trace <graph.json>             Verify page-spec to code implementation traceability
+                                   Options: --specs <dir>, --workspace <dir>, --out <file.md>
+  qa <graph.json>                Run 17 Quality Gates, scorecard, block First-Page Mirage
+                                   Options: --workspace <dir>, --mode <normal|high-fidelity>, --out <FINAL_QA.md>, --json <FINAL_QA.json>
   pipeline <url>                 Run complete automated discovery, graph, and coverage pipeline
-                                   Options: --workspace <dir>, --depth <n>
+                                   Options: --workspace <dir>, --depth <n>, --mode <normal|high-fidelity>
   help                           Show this help message
 `);
 }
@@ -157,6 +168,66 @@ async function main() {
         break;
       }
 
+      case 'diff': {
+        const origFile = args[1];
+        const localFile = args[2];
+        if (!origFile || !localFile) {
+          console.error("Error: Original HTML and Local HTML files required.");
+          process.exit(1);
+        }
+        const route = getArg('--route', '/');
+        const threshold = parseFloat(getArg('--threshold', '0.90'));
+        const outDir = getArg('--outDir', './visual-diffs');
+
+        const origHtml = fs.readFileSync(origFile, 'utf8');
+        const localHtml = fs.readFileSync(localFile, 'utf8');
+        const diffReport = compareVisualRegions(origHtml, localHtml, { threshold });
+
+        const slug = route === '/' ? 'home' : route.replace(/^\/+|\/+$/g, '').replace(/[\/\-_]+/g, '-');
+        const routeOutDir = path.join(outDir, slug);
+        fs.mkdirSync(routeOutDir, { recursive: true });
+
+        fs.writeFileSync(path.join(routeOutDir, 'diff-report.json'), JSON.stringify(diffReport, null, 2), 'utf8');
+        fs.writeFileSync(path.join(routeOutDir, 'VISUAL_DIFF.md'), generateVisualDiffMarkdown(diffReport, route), 'utf8');
+        console.log(`[CLI] Visual diff report saved to: ${routeOutDir}`);
+        process.exit(diffReport.status === 'PASS' ? 0 : 1);
+        break;
+      }
+
+      case 'repair': {
+        const graphFile = args[1];
+        if (!graphFile || graphFile.startsWith('--')) {
+          console.error("Error: Route graph JSON file required.");
+          process.exit(1);
+        }
+        const workspace = getArg('--workspace', './');
+        const maxRetries = parseInt(getArg('--maxRetries', '3'), 10);
+        const logFile = getArg('--log', 'repair-log.json');
+
+        const result = runAutonomousRepairLoop(graphFile, workspace, { maxRetries });
+        fs.writeFileSync(logFile, JSON.stringify(result, null, 2), 'utf8');
+        console.log(`[CLI] Repair log saved to: ${logFile}`);
+        process.exit(result.status === 'RESOLVED' ? 0 : 1);
+        break;
+      }
+
+      case 'trace': {
+        const graphFile = args[1];
+        if (!graphFile || graphFile.startsWith('--')) {
+          console.error("Error: Route graph JSON file required.");
+          process.exit(1);
+        }
+        const specsDir = getArg('--specs', './specs');
+        const workspace = getArg('--workspace', './');
+        const outMd = getArg('--out', 'TRACEABILITY_MATRIX.md');
+
+        const report = auditTraceability(graphFile, specsDir, workspace);
+        fs.writeFileSync(outMd, generateTraceabilityMarkdown(report), 'utf8');
+        console.log(`[CLI] Traceability report saved to: ${outMd}`);
+        process.exit(report.traceableRoutes === report.totalRoutes ? 0 : 1);
+        break;
+      }
+
       case 'qa': {
         const graphFile = args[1];
         if (!graphFile || graphFile.startsWith('--')) {
@@ -164,10 +235,15 @@ async function main() {
           process.exit(1);
         }
         const workspace = getArg('--workspace', './');
+        const mode = getArg('--mode', 'normal');
         const outMd = getArg('--out', 'FINAL_QA.md');
-        const result = evaluateQualityGates(graphFile, workspace);
+        const outJson = getArg('--json', 'FINAL_QA.json');
+
+        const result = evaluateQualityGates(graphFile, workspace, { mode });
         fs.writeFileSync(outMd, generateFinalQAMarkdown(result), 'utf8');
-        console.log(`[CLI] Final QA report saved to: ${outMd} (Status: ${result.overallStatus})`);
+        fs.writeFileSync(outJson, JSON.stringify(result, null, 2), 'utf8');
+        console.log(`[CLI] Final QA markdown saved to: ${outMd}`);
+        console.log(`[CLI] Final QA machine JSON saved to: ${outJson}`);
         process.exit(result.overallStatus === 'PASS' ? 0 : 1);
         break;
       }
@@ -180,8 +256,9 @@ async function main() {
         }
         const depth = parseInt(getArg('--depth', '2'), 10);
         const workspace = getArg('--workspace', './');
+        const mode = getArg('--mode', 'normal');
 
-        console.log(`=== Running Reverse Engineering Pipeline ===`);
+        console.log(`=== Running Reverse Engineering Pipeline (${mode.toUpperCase()} MODE) ===`);
         console.log(`Target: ${targetUrl}`);
         console.log(`Workspace: ${workspace}\n`);
 
@@ -195,13 +272,15 @@ async function main() {
         fs.writeFileSync('ROUTE_INVENTORY.md', generateRouteInventoryMarkdown(graph), 'utf8');
 
         // Step 3: Route Coverage & Quality Gates
-        const qaResult = evaluateQualityGates('route-graph.json', workspace);
+        const qaResult = evaluateQualityGates('route-graph.json', workspace, { mode });
         fs.writeFileSync('FINAL_QA.md', generateFinalQAMarkdown(qaResult), 'utf8');
+        fs.writeFileSync('FINAL_QA.json', JSON.stringify(qaResult, null, 2), 'utf8');
 
         console.log(`\n=== Pipeline Complete ===`);
-        console.log(`Routes: ${graph.totalRoutes}`);
+        console.log(`Routes Discovered: ${graph.totalRoutes}`);
         console.log(`Dynamic Families: ${graph.totalDynamicFamilies}`);
-        console.log(`Coverage Status: ${qaResult.coverage.metrics.overallStatus}`);
+        console.log(`Route Coverage: ${qaResult.scorecard.routeCoverage}`);
+        console.log(`Navigation Coverage: ${qaResult.scorecard.navigationCoverage}`);
         console.log(`Final QA Status: ${qaResult.overallStatus}`);
         process.exit(qaResult.overallStatus === 'PASS' ? 0 : 1);
         break;

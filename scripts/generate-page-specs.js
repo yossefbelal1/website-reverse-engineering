@@ -87,8 +87,7 @@ function generatePageSpecMarkdown(routeNode, pageEvidence) {
   md += `## 5. Animation & Motion Architecture\n\n`;
   md += `- **GSAP / ScrollTrigger**: ${animations.hasGsap ? 'Detected' : 'Not detected'}\n`;
   md += `- **Lenis / Smooth Scroll**: ${animations.hasLenis ? 'Detected' : 'Not detected'}\n`;
-  md += `- **Locomotive Scroll**: ${animations.hasLocomotive ? 'Detected' : 'Not detected'}\n`;
-  md += `- **Scroll Parallax (`[data-scroll]`)**: ${animations.hasDataScroll ? 'Active' : 'Not detected'}\n`;
+  md += `- **Scroll Parallax (\`[data-scroll]\`): ${animations.hasDataScroll ? 'Active' : 'Not detected'}\n`;
   md += `- **Barba.js / SPA Transitions**: ${animations.hasBarba ? 'Active' : 'Not detected'}\n\n`;
 
   return md;

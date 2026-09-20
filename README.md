@@ -48,12 +48,24 @@ node scripts/reverse-engineer-cli.js specs route-graph.json --evidence ./evidenc
 # Checks implementation completeness, FOUC safety, and tests for broken internal links
 node scripts/reverse-engineer-cli.js coverage route-graph.json --workspace ./ --out ROUTE_COVERAGE_MATRIX.md
 
-# 7. Evaluate Hard Quality Gates (First-Page Mirage Enforcer)
-# Runs all 17 Quality Gates and outputs FINAL_QA.md (exits with code 1 if any mandatory gate fails)
-node scripts/reverse-engineer-cli.js qa route-graph.json --workspace ./ --out FINAL_QA.md
+# # 7. Region-Based Visual Diffing
+# Computes similarity per semantic region across desktop, tablet, and mobile viewports
+node scripts/reverse-engineer-cli.js diff orig.html local.html --route /about --outDir ./visual-diffs
+
+# 8. Bounded Autonomous Repair Loop
+# Automatically classifies, locates, repairs, and re-verifies defects across all pages
+node scripts/reverse-engineer-cli.js repair route-graph.json --workspace ./ --maxRetries 3 --log repair-log.json
+
+# 9. Verify Spec-to-Code Traceability
+# Confirms that all discovered routes and specs are fully implemented in code
+node scripts/reverse-engineer-cli.js trace route-graph.json --specs ./specs --workspace ./ --out TRACEABILITY_MATRIX.md
+
+# 10. Evaluate Hard Quality Gates & Generate Site Scorecard
+# Runs all 17 Quality Gates and outputs FINAL_QA.md and FINAL_QA.json
+node scripts/reverse-engineer-cli.js qa route-graph.json --workspace ./ --mode high-fidelity --out FINAL_QA.md --json FINAL_QA.json
 
 # One-Shot Automated Pipeline
-node scripts/reverse-engineer-cli.js pipeline https://example.com --workspace ./
+node scripts/reverse-engineer-cli.js pipeline https://example.com --workspace ./ --mode high-fidelity
 ```
 
 ---
@@ -65,6 +77,9 @@ website-reverse-engineering/
 ├── package.json                           # Engine manifest and npm run scripts
 ├── SKILL.md                               # Complete skill definition and operational protocol
 ├── README.md                              # Repository overview and CLI documentation
+├── fixtures/                              # End-to-end testing fixtures
+│   ├── server.js                          # Zero-dependency local test server
+│   └── realistic-site/                    # Multi-page test fixture (7 routes, assets, styles)
 ├── scripts/                               # Programmatic reverse-engineering engines
 │   ├── reverse-engineer-cli.js            # Master unified CLI orchestrator
 │   ├── discover-routes.js                 # Multi-source route discovery engine
@@ -72,21 +87,30 @@ website-reverse-engineering/
 │   ├── collect-page-evidence.js           # Structured page-by-page evidence collector
 │   ├── extract-assets.js                  # Multi-page media & asset harvester
 │   ├── generate-page-specs.js             # Route specifications & design system generator
+│   ├── visual-diff-engine.js              # Region-based multi-viewport visual diff engine
+│   ├── classify-mismatches.js             # 17-class error taxonomy classifier
+│   ├── repair-loop.js                     # Bounded autonomous self-healing repair loop
+│   ├── verify-traceability.js             # Page-spec to code traceability engine
+│   ├── verify-content-and-assets.js       # Content fidelity & asset existence auditor
 │   ├── audit-route-coverage.js            # Route completeness, FOUC, and navigation auditor
 │   ├── verify-geometry-and-visuals.js     # Container-first sub-pixel geometry verifier (Δ <= 1px)
-│   ├── run-quality-gates.js               # Hard Quality Gate evaluator & FINAL_QA.md generator
+│   ├── run-quality-gates.js               # Hard Quality Gate evaluator & scorecard generator
 │   ├── audit-route-geometry.js            # In-browser DOM geometry extractor (console/CDP)
 │   ├── extract-design-tokens.js           # In-browser computed tokens extractor
 │   ├── inspect-animations.js              # In-browser animation & ScrollTrigger inspector
 │   ├── interaction-crawler.js             # In-browser interactive reachability crawler
 │   └── capture-comparison.js              # Multi-viewport capture & visual metrics helper
-├── tests/                                 # Automated test suite
+├── tests/                                 # Automated test suite (9 test suites)
 │   ├── run-all-tests.js                   # Master test runner
 │   ├── test-route-discovery.js            # URL normalization, domain boundaries, sitemap parsing
 │   ├── test-dynamic-routes.js             # Parametric segment detection & family clustering
-│   ├── test-route-graph.js                # Hierarchy generation & parent-child relationships
+│   ├── test-route-graph.js                # Hierarchy generation & parent-child tree mapping
 │   ├── test-coverage-and-gates.js         # Coverage calculations, FOUC, and First-Page Mirage block
-│   └── test-geometry-and-visuals.js       # Container width delta and line break detection
+│   ├── test-geometry-and-visuals.js       # Container width delta and line break detection
+│   ├── test-first-page-mirage-regression.js# Permanent regression test for First-Page Mirage
+│   ├── test-false-pass-prevention.js      # Negative assertion suite testing failure modes
+│   ├── test-repair-loop.js                # Self-healing repair cycle validation
+│   └── test-end-to-end-pipeline.js        # Full pipeline test against realistic multi-page fixture
 ├── references/                            # Deep-dive guides & protocols
 │   ├── EPISTEMIC_STANDARDS.md             # Evidence-based truth standards & measurement rules
 │   ├── INSPECTION_GUIDE.md                # CDP, CSS inspection, and asset extraction guide
@@ -110,6 +134,7 @@ website-reverse-engineering/
     ├── RESPONSIVE_SPEC.md                 # Breakpoint and adaptive layout specification
     ├── ROUTE_INVENTORY.md                 # Complete route catalog for multi-page sites
     ├── SPACING.md                         # Spatial rhythm and margin/padding scales
+    ├── TRACEABILITY_MATRIX.md             # Spec-to-code traceability matrix template
     ├── TYPOGRAPHY.md                      # Type scale, font families, line-heights, and weights
     └── VISUAL_COMPARISON_REPORT.md        # Pixel-diff and side-by-side audit report
 ```
@@ -118,7 +143,7 @@ website-reverse-engineering/
 
 ## Running Automated Tests
 
-Run the built-in test suite:
+Run the full suite of 9 test suites:
 ```bash
 npm test
 # or
@@ -126,15 +151,15 @@ node tests/run-all-tests.js
 ```
 
 The test suite exercises:
-- Route normalization (trailing slashes, tracking parameter stripping, hash fragments).
-- Domain boundary protection (filtering external links and subdomains).
-- Sitemap and robots.txt parsing.
-- Dynamic route pattern clustering (e.g. `/work/:slug`).
-- Hierarchical route graph building and parent-child tree mapping.
-- Local route coverage and FOUC detection.
-- Broken internal link discovery.
-- Strict First-Page Mirage blocking (guaranteeing that missing subpages cause Quality Gates to fail).
-- Sub-pixel container geometry delta assertions ($\Delta \le 1\text{px}$).
+1. **Route Discovery & Normalization**: Trailing slashes, tracking parameter stripping, hash fragments, robots.txt, sitemaps.
+2. **Dynamic Route Clustering**: Slug and ID detection, grouping into parameterized templates (e.g. `/work/:slug`).
+3. **Route Graph & Hierarchy**: Tree generation, parent-child links, traversal, crawl prioritization.
+4. **Route Coverage & Quality Gates**: Coverage calculations, FOUC detection, broken internal link detection.
+5. **Geometry Delta & Visual Verification**: Container width delta ($\Delta \le 1\text{px}$), section height cadence ($\Delta \le 2\text{px}$), and artificial `<br>` suppression.
+6. **First-Page Mirage Regression**: Proves that a perfect homepage with missing or broken subpages is strictly failed.
+7. **False-Pass Prevention**: Tests negative cases across 5 failure categories to ensure invalid implementations cannot pass.
+8. **Autonomous Self-Healing Repair Loop**: Proves that the repair loop detects defects, applies fixes, and achieves verification.
+9. **End-to-End Pipeline Integration**: Tests full workflow on a realistic 7-route website fixture with local server.
 
 ---
 

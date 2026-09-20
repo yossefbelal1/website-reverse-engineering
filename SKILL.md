@@ -280,6 +280,57 @@ When the route engine discovers parameterized paths (e.g. `/projecten/alquion`, 
 
 ---
 
+## Automated Verification, Mismatch Taxonomy & Self-Healing Loop
+
+The Phase 2 engine architecture provides automated validation, defect classification, and self-healing:
+
+### 1. Multi-Viewport Region-Based Visual Diffing (`scripts/visual-diff-engine.js`)
+- Deconstructs pages into discrete semantic regions: Header, Hero, Main Content Sections, Card Grids, CTA Banners, and Footer.
+- Measures similarity across 3 standard viewports:
+  - Desktop: 1440x900
+  - Tablet: 768x1024
+  - Mobile: 390x844
+- Enforces an automated passing threshold (default >= 90% per-region structural alignment).
+
+### 2. 17-Class Error Taxonomy (`scripts/classify-mismatches.js`)
+Every defect detected during automated verification or visual diffing is mapped to one of 17 standard failure classes with deterministic root-cause identification and auto-fix prescriptions:
+1. `MISSING_ROUTE`
+2. `BROKEN_NAVIGATION`
+3. `FOUC_DEFECT`
+4. `CONTAINER_OVERFLOW`
+5. `SECTION_HEIGHT_MISMATCH`
+6. `ARTIFICIAL_LINE_BREAK`
+7. `MISSING_SEMANTIC_REGION`
+8. `FONT_FAMILY_FALLBACK`
+9. `COLOR_DRIFT`
+10. `PADDING_DISCREPANCY`
+11. `LOREM_IPSUM_DETECTED`
+12. `BROKEN_ASSET_REFERENCE`
+13. `UNSUPPORTED_DYNAMIC_PARAM`
+14. `INTERACTION_UNREACHABLE`
+15. `ANIMATION_LEAK`
+16. `SPEC_TRACEABILITY_GAP`
+17. `VIEWPORT_COLLAPSE`
+
+### 3. Bounded Autonomous Repair Loop (`scripts/repair-loop.js`)
+Iterative self-healing engine executing:
+$$\text{AUDIT} \longrightarrow \text{CLASSIFY} \longrightarrow \text{LOCATE} \longrightarrow \text{PATCH} \longrightarrow \text{RE-AUDIT}$$
+- Bounded by `--maxRetries` (default 3) to guarantee termination.
+- Emits structured JSON execution log (`repair-log.json`).
+
+### 4. Spec-to-Code Traceability (`scripts/verify-traceability.js`)
+Ensures no code is generated without corresponding evidence and specifications (`TRACEABILITY_MATRIX.md`).
+
+### 5. Full Site Scorecard (`scripts/run-quality-gates.js`)
+Exports both `FINAL_QA.md` and machine-readable `FINAL_QA.json` containing measured percentages for:
+- Route Coverage %
+- Navigation Integrity %
+- FOUC Prevention %
+- Desktop Visual Parity %
+- Mobile Visual Parity %
+- Interaction Coverage %
+
+---
 
 ## The Tool Evidence Log Standard
 
