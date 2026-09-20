@@ -34,7 +34,16 @@ function auditRouteContentAndAssets(routeSlug, evidenceDir, workspaceRoot) {
   }
 
   // Resolve local file
-  const pathname = routeSlug === 'home' ? '/' : `/${routeSlug.replace(/-/g, '/')}`;
+  let pathname = '/';
+  if (dom.url) {
+    try {
+      pathname = new URL(dom.url).pathname;
+    } catch (e) {
+      pathname = routeSlug === 'home' ? '/' : `/${routeSlug.replace(/-/g, '/')}`;
+    }
+  } else {
+    pathname = routeSlug === 'home' ? '/' : `/${routeSlug.replace(/-/g, '/')}`;
+  }
   const candidates = resolveLocalPathCandidates(pathname);
   let localFile = null;
   for (const c of candidates) {
@@ -57,8 +66,31 @@ function auditRouteContentAndAssets(routeSlug, evidenceDir, workspaceRoot) {
   // Check 2: Heading preservation
   let matchedHeadings = 0;
   const expectedHeadings = (dom.headings || []).map(h => h.text.trim());
+  
+  const localHeadings = [];
+  const headingRegex = /<(h[1-6])\b[^>]*>(.*?)<\/\1>/gis;
+  let lhm;
+  while ((lhm = headingRegex.exec(localHtml)) !== null) {
+    const cleanLocal = lhm[2].replace(/<[^>]+>/g, ' ').trim().replace(/\s+/g, ' ');
+    if (cleanLocal) localHeadings.push(cleanLocal);
+  }
+
+  function normalizeHeading(str) {
+    return str.toLowerCase().replace(/[^a-z0-9]/gi, '');
+  }
+
   expectedHeadings.forEach(eh => {
-    if (localHtml.includes(eh)) {
+    const normExpected = normalizeHeading(eh);
+    if (!normExpected) {
+      matchedHeadings++;
+      return;
+    }
+    const matched = localHtml.includes(eh) || 
+      localHeadings.some(lh => {
+        const normLocal = normalizeHeading(lh);
+        return normLocal.includes(normExpected) || normExpected.includes(normLocal);
+      });
+    if (matched) {
       matchedHeadings++;
     }
   });

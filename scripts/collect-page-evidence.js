@@ -104,7 +104,7 @@ function analyzeHtml(html, pageUrl) {
   const headingRegex = /<(h[1-6])\b([^>]*)>(.*?)<\/\1>/gis;
   let hm;
   while ((hm = headingRegex.exec(html)) !== null) {
-    const cleanText = hm[3].replace(/<[^>]+>/g, '').trim().replace(/\s+/g, ' ');
+    const cleanText = hm[3].replace(/<[^>]+>/g, ' ').trim().replace(/\s+/g, ' ');
     const classMatch = hm[2].match(/\bclass=["']([^"']+)["']/i);
     headings.push({
       level: hm[1].toLowerCase(),
@@ -213,6 +213,7 @@ function analyzeHtml(html, pageUrl) {
 
   return {
     pageUrl,
+    rawHtml: html,
     title,
     description,
     landmarks,
@@ -231,6 +232,10 @@ function savePageEvidence(routePathname, evidence, outBaseDir) {
   const slug = routeToSlug(routePathname);
   const targetDir = path.join(outBaseDir, slug);
   fs.mkdirSync(targetDir, { recursive: true });
+
+  if (evidence.rawHtml) {
+    fs.writeFileSync(path.join(targetDir, 'source.html'), evidence.rawHtml, 'utf8');
+  }
 
   // 1. dom.json
   fs.writeFileSync(path.join(targetDir, 'dom.json'), JSON.stringify({

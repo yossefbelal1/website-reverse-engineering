@@ -1,0 +1,84 @@
+{
+  "url": "https://www.bramvanvugt.com/privacy-statement",
+  "title": "Privacy Policy | Breems - Data Protection &amp; Privacy",
+  "description": "",
+  "landmarks": [
+    {
+      "tag": "nav",
+      "index": 1,
+      "className": "nav_menu w-variant-eb005639-5267-f968-2ae6-3d05dcd8c2ab w-nav-menu",
+      "id": null
+    },
+    {
+      "tag": "main",
+      "index": 1,
+      "className": "page-wrapper",
+      "id": null
+    },
+    {
+      "tag": "main",
+      "index": 2,
+      "className": "main-wrapper",
+      "id": null
+    },
+    {
+      "tag": "section",
+      "index": 1,
+      "className": "section_hero-about",
+      "id": null
+    },
+    {
+      "tag": "footer",
+      "index": 1,
+      "className": "footer-fixed-wrapper",
+      "id": null
+    }
+  ],
+  "headings": [
+    {
+      "level": "h1",
+      "text": "Privacy Policy",
+      "className": "heading-style-h2"
+    },
+    {
+      "level": "h2",
+      "text": "1. Persoonsgegevens die wij verwerken",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "2. Doel en grondslag van de verwerking",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "3. Hoe lang we persoonsgegevens bewaren",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "4. Delen van persoonsgegevens met derden",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "5. Website statistieken en cookies",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "6. Gegevens inzien, aanpassen of verwijderen",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "7. Beveiliging van persoonsgegevens",
+      "className": null
+    },
+    {
+      "level": "h2",
+      "text": "Klaar om op— te vallen?",
+      "className": "footer-heading"
+    }
+  ]
+}

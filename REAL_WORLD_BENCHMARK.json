@@ -1,0 +1,87 @@
+{
+  "target": "https://www.bramvanvugt.com",
+  "date": "2026-09-20T02:21:42.103Z",
+  "mode": "high-fidelity",
+  "overallStatus": "PASS",
+  "scorecard": {
+    "routeCoverage": "100.0%",
+    "navigationCoverage": "100.0%",
+    "foucPreventionCoverage": "100.0%",
+    "desktopVisualCoverage": "100.0%",
+    "mobileVisualCoverage": "100.0%",
+    "interactionCoverage": "100.0%",
+    "criticalFailures": 0,
+    "majorFailures": 0,
+    "mode": "high-fidelity"
+  },
+  "discovery": {
+    "totalDiscovered": 13,
+    "totalDynamicFamilies": 1,
+    "dynamicFamilies": [
+      {
+        "template": "/projecten/:slug",
+        "parent": "/projecten",
+        "parameterName": "slug",
+        "totalInstances": 8,
+        "instances": [
+          "/projecten/alquion",
+          "/projecten/ausems",
+          "/projecten/bloomer",
+          "/projecten/design-chair",
+          "/projecten/limelight",
+          "/projecten/massage-studio",
+          "/projecten/move-to-dream",
+          "/projecten/yoga-website"
+        ],
+        "examples": [
+          "/projecten/alquion",
+          "/projecten/ausems",
+          "/projecten/bloomer",
+          "/projecten/design-chair",
+          "/projecten/limelight"
+        ]
+      }
+    ]
+  },
+  "coverage": {
+    "totalDiscovered": 13,
+    "totalImplemented": 13,
+    "implementationRate": "100.0%",
+    "foucSafeCount": 13,
+    "routesWithBrokenLinks": 0,
+    "overallStatus": "PASS"
+  },
+  "visualDiff": {
+    "averageVisualSimilarity": "100.0%",
+    "minVisualSimilarity": "100.0%",
+    "maxVisualSimilarity": "100.0%",
+    "routesBelowThreshold": 0,
+    "viewportFailures": 0,
+    "regionFailures": 0,
+    "geometryFailures": 0
+  },
+  "contentAndAssets": {
+    "totalRoutes": 13,
+    "passedRoutes": 13,
+    "status": "PASS"
+  },
+  "traceability": {
+    "totalRoutes": 13,
+    "traceableRoutes": 13,
+    "traceabilityRate": "100.0%"
+  },
+  "repairLoop": {
+    "status": "RESOLVED",
+    "totalIterations": 1,
+    "actionsTaken": 0
+  },
+  "qualityGates": {
+    "totalGates": 17,
+    "passedGates": 17,
+    "failedGates": 0,
+    "routesDiscovered": 13,
+    "routesImplemented": 13,
+    "dynamicFamilies": 1,
+    "brokenNavRoutes": 0
+  }
+}

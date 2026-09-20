@@ -1,0 +1,205 @@
+[
+  {
+    "type": "link",
+    "text": "",
+    "href": "/",
+    "className": "nav_brand w-nav-brand",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Home",
+    "href": "/",
+    "className": "nav-menu-link-block w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "About",
+    "href": "/about",
+    "className": "nav-menu-link-block w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Work",
+    "href": "/work",
+    "className": "nav-menu-link-block w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Contact",
+    "href": "/contact",
+    "className": "nav-menu-link-block w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Home",
+    "href": "/",
+    "className": "fixed-navbar-link w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "About",
+    "href": "/about",
+    "className": "fixed-navbar-link w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Work",
+    "href": "/work",
+    "className": "fixed-navbar-link w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Contact",
+    "href": "/contact",
+    "className": "fixed-navbar-link w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "LinkedIn",
+    "href": "https://www.linkedin.com/in/bram-van-vugt-9607301b9/",
+    "className": "nav-fixed-social-links",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Instagram",
+    "href": "https://www.instagram.com/breems.design/",
+    "className": "nav-fixed-social-links",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Bekijk website",
+    "href": "https://www.alquion.com/",
+    "className": "main-button-wrapper grey-2 w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Bekijk website",
+    "href": "https://www.alquion.com/",
+    "className": "main-button-wrapper grey-2 w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Momkai",
+    "href": "https://momkai.com/",
+    "className": "text-size-medium text-link",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Momkai",
+    "href": "https://momkai.com/",
+    "className": null,
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Alle projecten",
+    "href": "/work",
+    "className": "main-button-wrapper w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "DesignBloomerBekijken2025",
+    "href": "/projecten/bloomer",
+    "className": "project-link-row w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Design &amp; DevelopmentMassage studioBe",
+    "href": "/projecten/massage-studio",
+    "className": "project-link-row w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "DesignDesign ChairBekijken2024",
+    "href": "/projecten/design-chair",
+    "className": "project-link-row w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "All work",
+    "href": "/work",
+    "className": "main-button-wrapper w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Your browser does not support the video ",
+    "href": "/projecten/bloomer",
+    "className": "project-link-block homepage w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Your browser does not support the video ",
+    "href": "/projecten/ausems",
+    "className": "project-link-block homepage w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Your browser does not support the video ",
+    "href": "/projecten/limelight",
+    "className": "project-link-block homepage w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Hello@bramvanvugt.com",
+    "href": "mailto:Hello@bramvanvugt.com",
+    "className": "main-button-wrapper w-variant-a8c88042-9262-59ed-8e1d-ffe36bb3bdc4 w-inline-block",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Privacy Policy",
+    "href": "/privacy-statement",
+    "className": "privacy-link",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "LinkedIn",
+    "href": "https://www.linkedin.com/in/bram-van-vugt-9607301b9/",
+    "className": "social-link",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Instagram",
+    "href": "https://www.instagram.com/breems.design/",
+    "className": "social-link",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Dribble",
+    "href": "https://dribbble.com/BreemsDesign",
+    "className": "social-link",
+    "isMagnetic": false
+  },
+  {
+    "type": "link",
+    "text": "Behance",
+    "href": "https://www.behance.net/bramvanvugt1",
+    "className": "social-link",
+    "isMagnetic": false
+  }
+]

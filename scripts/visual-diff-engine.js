@@ -248,10 +248,168 @@ if (require.main === module) {
   process.exit(diffReport.status === 'PASS' ? 0 : 1);
 }
 
+function compareAllRoutesVisualRegions(graphPath, evidenceDir, workspaceRoot, options = {}) {
+  const threshold = options.threshold || 0.90;
+  const { resolveLocalPathCandidates, auditRouteImplementation } = require('./audit-route-coverage');
+  const graph = JSON.parse(fs.readFileSync(graphPath, 'utf8'));
+  const routes = graph.nodes || [];
+
+  const matrix = [];
+  let totalSim = 0;
+  let validSimCount = 0;
+  let minSim = 1.0;
+  let maxSim = 0.0;
+  let belowThresholdCount = 0;
+  let viewportFailures = 0;
+  let regionFailures = 0;
+  let geometryFailures = 0;
+
+  for (const r of routes) {
+    const slug = routeToSlug(r.pathname);
+    const pageEvDir = path.join(evidenceDir, slug);
+    const sourceHtmlFile = path.join(pageEvDir, 'source.html');
+    const domFile = path.join(pageEvDir, 'dom.json');
+    const hasEvidence = fs.existsSync(sourceHtmlFile) || fs.existsSync(domFile);
+
+    const candidates = resolveLocalPathCandidates(r.pathname);
+    let localFile = null;
+    for (const c of candidates) {
+      const full = path.join(workspaceRoot, c);
+      if (fs.existsSync(full) && fs.statSync(full).isFile()) {
+        localFile = full;
+        break;
+      }
+    }
+    const hasImpl = !!localFile;
+
+    const row = {
+      route: r.pathname,
+      isDynamic: !!r.isDynamic,
+      dynamicTemplate: r.dynamicTemplate || null,
+      discovered: 'PASS',
+      evidence: hasEvidence ? 'PASS' : 'FAIL',
+      implemented: hasImpl ? 'PASS' : 'FAIL',
+      desktop: 'NOT_VERIFIED',
+      tablet: 'NOT_VERIFIED',
+      mobile: 'NOT_VERIFIED',
+      interaction: 'NOT_VERIFIED',
+      visual: 'NOT_VERIFIED',
+      status: 'NOT_VERIFIED',
+      similarity: null,
+      notes: ''
+    };
+
+    if (!hasEvidence || !hasImpl) {
+      if (!hasEvidence) row.notes += 'No evidence collected. ';
+      if (!hasImpl) row.notes += 'Not implemented in workspace. ';
+      row.status = 'NOT_VERIFIED';
+    } else {
+      const origHtml = fs.existsSync(sourceHtmlFile) ? fs.readFileSync(sourceHtmlFile, 'utf8') : '';
+      const localHtml = fs.readFileSync(localFile, 'utf8');
+
+      if (!origHtml) {
+        row.notes += 'Empty or missing source HTML. ';
+        row.status = 'PARTIAL';
+      } else {
+        const diff = compareVisualRegions(origHtml, localHtml, { threshold });
+        row.similarity = diff.overallSimilarity;
+        totalSim += diff.overallSimilarity;
+        validSimCount++;
+        minSim = Math.min(minSim, diff.overallSimilarity);
+        maxSim = Math.max(maxSim, diff.overallSimilarity);
+
+        const dPass = diff.viewportResults.find(v => v.viewport === 'desktop')?.status === 'PASS';
+        const tPass = diff.viewportResults.find(v => v.viewport === 'tablet')?.status === 'PASS';
+        const mPass = diff.viewportResults.find(v => v.viewport === 'mobile')?.status === 'PASS';
+
+        row.desktop = dPass ? 'PASS' : 'FAIL';
+        row.tablet = tPass ? 'PASS' : 'FAIL';
+        row.mobile = mPass ? 'PASS' : 'FAIL';
+
+        if (!dPass) viewportFailures++;
+        if (!tPass) viewportFailures++;
+        if (!mPass) viewportFailures++;
+
+        if (diff.failedRegions.length > 0) {
+          regionFailures += diff.failedRegions.length;
+        }
+
+        // Test interaction via route audit
+        const routeAudit = auditRouteImplementation(r, workspaceRoot);
+        const intPass = routeAudit.brokenLinks.length === 0;
+        row.interaction = intPass ? 'PASS' : 'FAIL';
+
+        row.visual = diff.status === 'PASS' ? 'PASS' : 'FAIL';
+        if (diff.status !== 'PASS') {
+          belowThresholdCount++;
+        }
+
+        if (dPass && tPass && mPass && intPass && diff.status === 'PASS') {
+          row.status = 'PASS';
+        } else if (diff.overallSimilarity >= 0.70) {
+          row.status = 'PARTIAL';
+        } else {
+          row.status = 'FAIL';
+        }
+      }
+    }
+    matrix.push(row);
+  }
+
+  const avgSim = validSimCount > 0 ? parseFloat((totalSim / validSimCount).toFixed(3)) : 0;
+  if (validSimCount === 0) minSim = 0;
+
+  return {
+    target: graph.target,
+    totalRoutes: routes.length,
+    matrix,
+    stats: {
+      averageVisualSimilarity: (avgSim * 100).toFixed(1) + '%',
+      minVisualSimilarity: (minSim * 100).toFixed(1) + '%',
+      maxVisualSimilarity: (maxSim * 100).toFixed(1) + '%',
+      routesBelowThreshold: belowThresholdCount,
+      viewportFailures,
+      regionFailures,
+      geometryFailures
+    }
+  };
+}
+
+function generateRouteBenchmarkMatrixMarkdown(benchmark) {
+  let md = `# Route Benchmark Matrix\n\n`;
+  md += `**Target Website**: \`${benchmark.target}\`  \n`;
+  md += `**Total Routes**: \`${benchmark.totalRoutes}\`  \n`;
+  md += `**Average Visual Similarity**: \`${benchmark.stats.averageVisualSimilarity}\`  \n`;
+  md += `**Min / Max Similarity**: \`${benchmark.stats.minVisualSimilarity}\` / \`${benchmark.stats.maxVisualSimilarity}\`  \n\n`;
+  md += `---\n\n`;
+
+  md += `| Route | Discovered | Evidence | Implemented | Desktop | Tablet | Mobile | Interaction | Visual | Status |\n`;
+  md += `|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n`;
+
+  for (const r of benchmark.matrix) {
+    const icon = (val) => val === 'PASS' ? '✅ PASS' : val === 'FAIL' ? '❌ FAIL' : val === 'PARTIAL' ? '⚠️ PARTIAL' : '⚪ NOT_VERIFIED';
+    md += `| \`${r.route}\` | ${icon(r.discovered)} | ${icon(r.evidence)} | ${icon(r.implemented)} | ${icon(r.desktop)} | ${icon(r.tablet)} | ${icon(r.mobile)} | ${icon(r.interaction)} | ${icon(r.visual)} | **${icon(r.status)}** |\n`;
+  }
+
+  md += `\n---\n\n`;
+  md += `### Summary Metrics\n\n`;
+  md += `- **Average Visual Similarity**: ${benchmark.stats.averageVisualSimilarity}\n`;
+  md += `- **Minimum Visual Similarity**: ${benchmark.stats.minVisualSimilarity}\n`;
+  md += `- **Maximum Visual Similarity**: ${benchmark.stats.maxVisualSimilarity}\n`;
+  md += `- **Routes Below Threshold (<90%)**: ${benchmark.stats.routesBelowThreshold}\n`;
+  md += `- **Viewport Failures**: ${benchmark.stats.viewportFailures}\n`;
+  md += `- **Region Failures**: ${benchmark.stats.regionFailures}\n`;
+  md += `- **Geometry Failures**: ${benchmark.stats.geometryFailures}\n`;
+
+  return md;
+}
+
 module.exports = {
   extractSemanticRegions,
   compareRegion,
   compareVisualRegions,
   generateVisualDiffMarkdown,
+  compareAllRoutesVisualRegions,
+  generateRouteBenchmarkMatrixMarkdown,
   VIEWPORT_SPECS
 };

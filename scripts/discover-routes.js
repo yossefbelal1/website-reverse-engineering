@@ -198,6 +198,10 @@ function categorizeRoute(urlStr) {
   const pathname = parsed.pathname;
   const ext = getExtension(pathname);
 
+  if (pathname.startsWith('/_next/') || pathname.startsWith('/_nuxt/') || pathname.startsWith('/cdn-cgi/') || pathname.startsWith('/api/')) {
+    return 'asset';
+  }
+
   if (ext && ASSET_EXTENSIONS.has(ext)) {
     return 'asset';
   }

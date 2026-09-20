@@ -1,0 +1,105 @@
+{
+  "url": "https://www.bramvanvugt.com/projecten/ausems",
+  "title": "Ausems | Projecten Breems",
+  "description": "",
+  "landmarks": [
+    {
+      "tag": "nav",
+      "index": 1,
+      "className": "nav_menu w-nav-menu",
+      "id": null
+    },
+    {
+      "tag": "main",
+      "index": 1,
+      "className": "page-wrapper",
+      "id": null
+    },
+    {
+      "tag": "main",
+      "index": 2,
+      "className": "main-wrapper",
+      "id": null
+    },
+    {
+      "tag": "section",
+      "index": 1,
+      "className": "section_hero-project",
+      "id": null
+    },
+    {
+      "tag": "section",
+      "index": 2,
+      "className": "section_projecten project-page",
+      "id": null
+    },
+    {
+      "tag": "footer",
+      "index": 1,
+      "className": "footer-fixed-wrapper",
+      "id": null
+    }
+  ],
+  "headings": [
+    {
+      "level": "h2",
+      "text": "—",
+      "className": "heading-style-h3 italic project"
+    },
+    {
+      "level": "h1",
+      "text": "Ausems",
+      "className": "heading-style-h3 italic project"
+    },
+    {
+      "level": "h2",
+      "text": "Maak vastgoed simpel en toekomstbestendig",
+      "className": "heading-style-h3 italic regular grey"
+    },
+    {
+      "level": "h2",
+      "text": "Bekijk nog meer blitse projecten",
+      "className": "heading-style-h2"
+    },
+    {
+      "level": "h2",
+      "text": "Limelight",
+      "className": "heading-style-h2 italic regular"
+    },
+    {
+      "level": "h2",
+      "text": "Move to Dream",
+      "className": "heading-style-h2 italic regular"
+    },
+    {
+      "level": "h2",
+      "text": "Yoga docent Hilde",
+      "className": "heading-style-h2 italic regular"
+    },
+    {
+      "level": "h2",
+      "text": "Bekijk nog meer blitse projecten",
+      "className": "heading-style-h2"
+    },
+    {
+      "level": "h3",
+      "text": "Bloomer",
+      "className": "project-title"
+    },
+    {
+      "level": "h3",
+      "text": "Move to Dream",
+      "className": "project-title"
+    },
+    {
+      "level": "h3",
+      "text": "Yoga docent Hilde",
+      "className": "project-title"
+    },
+    {
+      "level": "h2",
+      "text": "Klaar om op— te vallen?",
+      "className": "footer-heading"
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "target": "https://www.bramvanvugt.com",
+  "totalRoutes": 13,
+  "generatedAt": "2026-09-20T02:21:40.886Z",
+  "routes": [
+    {
+      "url": "https://www.bramvanvugt.com/",
+      "pathname": "/",
+      "search": "",
+      "type": "root",
+      "sources": [
+        "sitemap.xml",
+        "root-entry",
+        "html-link",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "WebPage"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/about",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/contact",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/privacy-statement",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.846Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/about",
+      "pathname": "/about",
+      "search": "",
+      "type": "static",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "button",
+        "footer",
+        "AboutPage",
+        "Person"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/about",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/contact",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/privacy-statement",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/contact",
+      "pathname": "/contact",
+      "search": "",
+      "type": "static",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "button",
+        "ContactPage"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/about",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/contact",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/privacy-statement",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/privacy-statement",
+      "pathname": "/privacy-statement",
+      "search": "",
+      "type": "static",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "body",
+        "WebPage"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/about",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/contact",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/privacy-statement",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/alquion",
+      "pathname": "/projecten/alquion",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/ausems",
+      "pathname": "/projecten/ausems",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/bloomer",
+      "pathname": "/projecten/bloomer",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/design-chair",
+      "pathname": "/projecten/design-chair",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/limelight",
+      "pathname": "/projecten/limelight",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/massage-studio",
+      "pathname": "/projecten/massage-studio",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/move-to-dream",
+      "pathname": "/projecten/move-to-dream",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/projecten/massage-studio"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/projecten/yoga-website",
+      "pathname": "/projecten/yoga-website",
+      "search": "",
+      "type": "dynamic-candidate",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    },
+    {
+      "url": "https://www.bramvanvugt.com/work",
+      "pathname": "/work",
+      "search": "",
+      "type": "static",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "button",
+        "CollectionPage"
+      ],
+      "parents": [
+        "https://www.bramvanvugt.com/",
+        "https://www.bramvanvugt.com/about",
+        "https://www.bramvanvugt.com/work",
+        "https://www.bramvanvugt.com/contact",
+        "https://www.bramvanvugt.com/projecten/ausems",
+        "https://www.bramvanvugt.com/projecten/limelight",
+        "https://www.bramvanvugt.com/projecten/alquion",
+        "https://www.bramvanvugt.com/projecten/move-to-dream",
+        "https://www.bramvanvugt.com/projecten/yoga-website",
+        "https://www.bramvanvugt.com/privacy-statement",
+        "https://www.bramvanvugt.com/projecten/bloomer",
+        "https://www.bramvanvugt.com/projecten/massage-studio",
+        "https://www.bramvanvugt.com/projecten/design-chair"
+      ],
+      "discoveredAt": "2026-09-20T02:21:39.847Z",
+      "status": "discovered"
+    }
+  ]
+}

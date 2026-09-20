@@ -1,0 +1,126 @@
+{
+  "url": "https://www.bramvanvugt.com/",
+  "title": "Webdesign &amp; Webflow Development | Breems",
+  "description": "",
+  "landmarks": [
+    {
+      "tag": "nav",
+      "index": 1,
+      "className": "nav_menu w-nav-menu",
+      "id": null
+    },
+    {
+      "tag": "main",
+      "index": 1,
+      "className": "page-wrapper",
+      "id": null
+    },
+    {
+      "tag": "main",
+      "index": 2,
+      "className": "main-wrapper",
+      "id": null
+    },
+    {
+      "tag": "section",
+      "index": 1,
+      "className": "section_hero desktop",
+      "id": null
+    },
+    {
+      "tag": "section",
+      "index": 2,
+      "className": "section_hero-mobile",
+      "id": null
+    },
+    {
+      "tag": "section",
+      "index": 3,
+      "className": "section_home-discover",
+      "id": null
+    },
+    {
+      "tag": "footer",
+      "index": 1,
+      "className": "footer-fixed-wrapper",
+      "id": null
+    }
+  ],
+  "headings": [
+    {
+      "level": "h1",
+      "text": "Webdesign &amp; -development voor groeiende bedrijven",
+      "className": "hero-intro-text italic"
+    },
+    {
+      "level": "h2",
+      "text": "Gecertificeerd webflow partner",
+      "className": "hero-intro-text"
+    },
+    {
+      "level": "h1",
+      "text": "Webdesign &amp; -development voor groeiende bedrijven",
+      "className": "hero-intro-text italic"
+    },
+    {
+      "level": "h2",
+      "text": "Gecertificeerd webflow partner",
+      "className": "hero-intro-text"
+    },
+    {
+      "level": "h2",
+      "text": "Je hebt wel een website maar het past niet meer bij wat je wilt uitstralen. Ik ontwerp en bouw volledig gepersonaliseerde websites zodat jouw ambities wél matchen met jouw uitstraling.",
+      "className": "heading-style-h3"
+    },
+    {
+      "level": "h2",
+      "text": "Een aantal hele blitse projecten",
+      "className": "heading-style-h2 projecten"
+    },
+    {
+      "level": "h3",
+      "text": "Ausems",
+      "className": "project-title"
+    },
+    {
+      "level": "h3",
+      "text": "Limelight",
+      "className": "project-title"
+    },
+    {
+      "level": "h3",
+      "text": "Alquion",
+      "className": "project-title"
+    },
+    {
+      "level": "h3",
+      "text": "Move to Dream",
+      "className": "project-title"
+    },
+    {
+      "level": "h2",
+      "text": "Bram heeft een brede skillset binnen Webflow, op zowel design als development vlak. Samen met Bram hebben we al meerdere websites succesvol opgepakt, van basic websites tot complexe platforms. Met Bram is het prettig samenwerken, hij denkt mee, komt met toffe oplossingen en zorgt dat de websites de vraag van de klant overtreffen!",
+      "className": "heading-style-h3"
+    },
+    {
+      "level": "h2",
+      "text": "Ben je op zoek naar een mooie en goed werkende website? Dan zit je bij Bram goed. Ik heb van begin tot einde een goed gevoel gehad. Hij pakt de dingen snel op, gaat goed om met verandering en is bekend met de nieuwste ontwikkelingen.",
+      "className": "heading-style-h3"
+    },
+    {
+      "level": "h2",
+      "text": "Bram heeft mijn website ontworpen en gebouwd. Ik heb de samenwerking als zeer prettig ervaren. Hij luistert goed naar je wensen en heeft creatieve ideeën om je website nog beter te maken. Bram komt zijn afspraken na en is helder in de communicatie. Ik zou iedereen aanraden om met Bram samen te werken!",
+      "className": "heading-style-h3"
+    },
+    {
+      "level": "h2",
+      "text": "Ontdek hoe ik jouw website naar een hoger niveau breng",
+      "className": "heading-style-h3 text-align-center"
+    },
+    {
+      "level": "h2",
+      "text": "Klaar om op— te vallen?",
+      "className": "footer-heading"
+    }
+  ]
+}

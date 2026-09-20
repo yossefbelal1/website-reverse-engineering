@@ -1,0 +1,657 @@
+{
+  "target": "https://www.bramvanvugt.com",
+  "totalRoutes": 13,
+  "totalDynamicFamilies": 1,
+  "dynamicFamilies": [
+    {
+      "template": "/projecten/:slug",
+      "parent": "/projecten",
+      "parameterName": "slug",
+      "totalInstances": 8,
+      "instances": [
+        "/projecten/alquion",
+        "/projecten/ausems",
+        "/projecten/bloomer",
+        "/projecten/design-chair",
+        "/projecten/limelight",
+        "/projecten/massage-studio",
+        "/projecten/move-to-dream",
+        "/projecten/yoga-website"
+      ],
+      "examples": [
+        "/projecten/alquion",
+        "/projecten/ausems",
+        "/projecten/bloomer",
+        "/projecten/design-chair",
+        "/projecten/limelight"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "pathname": "/",
+      "url": "https://www.bramvanvugt.com/",
+      "depth": 0,
+      "parentPath": null,
+      "isDynamic": false,
+      "dynamicTemplate": null,
+      "type": "root",
+      "priority": "critical",
+      "sources": [
+        "sitemap.xml",
+        "root-entry",
+        "html-link",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "WebPage"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/about",
+      "url": "https://www.bramvanvugt.com/about",
+      "depth": 1,
+      "parentPath": "/",
+      "isDynamic": false,
+      "dynamicTemplate": null,
+      "type": "static",
+      "priority": "high",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "button",
+        "footer",
+        "AboutPage",
+        "Person"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/contact",
+      "url": "https://www.bramvanvugt.com/contact",
+      "depth": 1,
+      "parentPath": "/",
+      "isDynamic": false,
+      "dynamicTemplate": null,
+      "type": "static",
+      "priority": "high",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "button",
+        "ContactPage"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/privacy-statement",
+      "url": "https://www.bramvanvugt.com/privacy-statement",
+      "depth": 1,
+      "parentPath": "/",
+      "isDynamic": false,
+      "dynamicTemplate": null,
+      "type": "static",
+      "priority": "high",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "body",
+        "WebPage"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/alquion",
+      "url": "https://www.bramvanvugt.com/projecten/alquion",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/ausems",
+      "url": "https://www.bramvanvugt.com/projecten/ausems",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/bloomer",
+      "url": "https://www.bramvanvugt.com/projecten/bloomer",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/design-chair",
+      "url": "https://www.bramvanvugt.com/projecten/design-chair",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/limelight",
+      "url": "https://www.bramvanvugt.com/projecten/limelight",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/massage-studio",
+      "url": "https://www.bramvanvugt.com/projecten/massage-studio",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/move-to-dream",
+      "url": "https://www.bramvanvugt.com/projecten/move-to-dream",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/projecten/yoga-website",
+      "url": "https://www.bramvanvugt.com/projecten/yoga-website",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    },
+    {
+      "pathname": "/work",
+      "url": "https://www.bramvanvugt.com/work",
+      "depth": 1,
+      "parentPath": "/",
+      "isDynamic": false,
+      "dynamicTemplate": null,
+      "type": "static",
+      "priority": "high",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "crawler",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "button",
+        "CollectionPage"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified"
+    }
+  ],
+  "tree": [
+    {
+      "pathname": "/",
+      "url": "https://www.bramvanvugt.com/",
+      "depth": 0,
+      "parentPath": null,
+      "isDynamic": false,
+      "dynamicTemplate": null,
+      "type": "root",
+      "priority": "critical",
+      "sources": [
+        "sitemap.xml",
+        "root-entry",
+        "html-link",
+        "json-ld"
+      ],
+      "contexts": [
+        "navigation",
+        "WebPage"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": [
+        {
+          "pathname": "/about",
+          "url": "https://www.bramvanvugt.com/about",
+          "depth": 1,
+          "parentPath": "/",
+          "isDynamic": false,
+          "dynamicTemplate": null,
+          "type": "static",
+          "priority": "high",
+          "sources": [
+            "sitemap.xml",
+            "html-link",
+            "crawler",
+            "json-ld"
+          ],
+          "contexts": [
+            "navigation",
+            "button",
+            "footer",
+            "AboutPage",
+            "Person"
+          ],
+          "status": "discovered",
+          "implementationStatus": "pending",
+          "verificationStatus": "unverified",
+          "children": []
+        },
+        {
+          "pathname": "/contact",
+          "url": "https://www.bramvanvugt.com/contact",
+          "depth": 1,
+          "parentPath": "/",
+          "isDynamic": false,
+          "dynamicTemplate": null,
+          "type": "static",
+          "priority": "high",
+          "sources": [
+            "sitemap.xml",
+            "html-link",
+            "crawler",
+            "json-ld"
+          ],
+          "contexts": [
+            "navigation",
+            "button",
+            "ContactPage"
+          ],
+          "status": "discovered",
+          "implementationStatus": "pending",
+          "verificationStatus": "unverified",
+          "children": []
+        },
+        {
+          "pathname": "/privacy-statement",
+          "url": "https://www.bramvanvugt.com/privacy-statement",
+          "depth": 1,
+          "parentPath": "/",
+          "isDynamic": false,
+          "dynamicTemplate": null,
+          "type": "static",
+          "priority": "high",
+          "sources": [
+            "sitemap.xml",
+            "html-link",
+            "crawler",
+            "json-ld"
+          ],
+          "contexts": [
+            "body",
+            "WebPage"
+          ],
+          "status": "discovered",
+          "implementationStatus": "pending",
+          "verificationStatus": "unverified",
+          "children": []
+        },
+        {
+          "pathname": "/work",
+          "url": "https://www.bramvanvugt.com/work",
+          "depth": 1,
+          "parentPath": "/",
+          "isDynamic": false,
+          "dynamicTemplate": null,
+          "type": "static",
+          "priority": "high",
+          "sources": [
+            "sitemap.xml",
+            "html-link",
+            "crawler",
+            "json-ld"
+          ],
+          "contexts": [
+            "navigation",
+            "button",
+            "CollectionPage"
+          ],
+          "status": "discovered",
+          "implementationStatus": "pending",
+          "verificationStatus": "unverified",
+          "children": []
+        }
+      ]
+    },
+    {
+      "pathname": "/projecten/alquion",
+      "url": "https://www.bramvanvugt.com/projecten/alquion",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/ausems",
+      "url": "https://www.bramvanvugt.com/projecten/ausems",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/bloomer",
+      "url": "https://www.bramvanvugt.com/projecten/bloomer",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/design-chair",
+      "url": "https://www.bramvanvugt.com/projecten/design-chair",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/limelight",
+      "url": "https://www.bramvanvugt.com/projecten/limelight",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/massage-studio",
+      "url": "https://www.bramvanvugt.com/projecten/massage-studio",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/move-to-dream",
+      "url": "https://www.bramvanvugt.com/projecten/move-to-dream",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    },
+    {
+      "pathname": "/projecten/yoga-website",
+      "url": "https://www.bramvanvugt.com/projecten/yoga-website",
+      "depth": 2,
+      "parentPath": "/projecten",
+      "isDynamic": true,
+      "dynamicTemplate": "/projecten/:slug",
+      "type": "dynamic-instance",
+      "priority": "medium",
+      "sources": [
+        "sitemap.xml",
+        "html-link",
+        "json-ld",
+        "crawler"
+      ],
+      "contexts": [
+        "body",
+        "CreativeWork"
+      ],
+      "status": "discovered",
+      "implementationStatus": "pending",
+      "verificationStatus": "unverified",
+      "children": []
+    }
+  ],
+  "generatedAt": "2026-09-20T02:21:40.887Z"
+}

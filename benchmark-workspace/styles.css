@@ -1,0 +1,4 @@
+/* Auto-generated styles for https://www.bramvanvugt.com */
+:root { --font-sans: system-ui, sans-serif; }
+body { margin: 0; font-family: var(--font-sans); line-height: 1.5; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
